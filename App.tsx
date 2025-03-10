@@ -1,6 +1,6 @@
 
 import { useRef } from "react" 
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Share } from 'react-native'
 import { Product } from './src/components/product'
 import { captureRef } from "react-native-view-shot"
 
@@ -14,6 +14,25 @@ const PRODUCT = {
 export default function App() {
 
   const productRef = useRef<View>(null)
+
+  async function save () {
+    try {
+      const productURI = await  captureRef (productRef, {
+        quality: 1,
+        format: "png",
+        result: "data-uri",
+      })
+
+      await Share.share({
+        title: PRODUCT.title,
+        message: PRODUCT.title,
+        url: productURI,
+      })
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <View style={styles.container}>
