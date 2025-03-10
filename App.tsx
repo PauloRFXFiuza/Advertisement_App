@@ -1,4 +1,6 @@
 
+import * as FileSystem from 'expo-file-system'
+import * as Sharing from 'expo-sharing'
 import { useRef } from "react" 
 import { StyleSheet, Text, View, Share, Button } from 'react-native'
 import { Product } from './src/components/product'
@@ -12,51 +14,68 @@ const PRODUCT = {
 }
 
 export default function App() {
+  const productRef = useRef<View>(null);
 
-  const productRef = useRef<View>(null)
-
-  async function save () {
+  async function save() {
     try {
-      const productURI = await captureRef (productRef, {
+      const productURI = await captureRef(productRef, {
         quality: 1,
         format: "png",
-        result: "data-uri",
-      })
+        result: "tmpfile",
+      });
 
-      await Share.share({
-        title: PRODUCT.title,
-        message: PRODUCT.title,
-        url: productURI,
-      })
+      console.log("Imagem capturada de:", productURI);
+
+      const newPath = FileSystem.documentDirectory + "product.png";
+
+      await FileSystem.moveAsync({
+        from: productURI,
+        to: newPath,
+      });
+
+      console.log("Imagem movida para:", newPath);
+
+      if (await Sharing.isAvailableAsync()) {
+        await Sharing.shareAsync(newPath);
+      } else {
+        console.log("Compartilhamento não disponível");
+      }
 
     } catch (error) {
-      console.log(error)
+      console.log("Erro ao capturar imagem:", error);
     }
   }
 
   return (
     <View style={styles.container}>
-        <Text style={styles.title}>Detalhes</Text>
-        <Product ref={productRef} data={PRODUCT} />
-        <Button title="Salvar" onPress={save} />
+      <Text style={styles.title}>Detalhes</Text>
+
+      {/* Envolvendo o componente Product dentro da View referenciada */}
+      <View ref={productRef} collapsable={false} style={styles.captureArea}>
+        <Product data={PRODUCT} />
+      </View>
+
+      <Button title="Salvar" onPress={save} />
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    justifyContent: "center",
     padding: 24,
     gap: 24,
   },
-
-  title:{
+  title: {
     fontSize: 24,
     fontWeight: "bold",
     color: "#C7C7C7",
   },
-
-})
+  captureArea: {
+    backgroundColor: "white", // Garante fundo branco na captura
+    padding: 10, // Adiciona um espaçamento para não cortar nada
+    borderRadius: 10, // Bordas arredondadas (opcional)
+  },
+});
