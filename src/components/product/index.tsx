@@ -1,4 +1,5 @@
-import {View} from "react-native"
+import {View, Image} from "react-native"
+import {styles} from "./styles"
 
 type Props = {
     data: {
@@ -10,5 +11,9 @@ type Props = {
 }
 
 export function Product ({data} : Props){
-    return <View></View>
+    return (
+        <View style={styles.container}>
+            <Image source = {{uri: data.imageURI}} style={styles.image}/>
+        </View>
+    )
 }
