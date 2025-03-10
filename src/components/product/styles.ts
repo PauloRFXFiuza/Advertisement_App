@@ -11,4 +11,17 @@ export const styles = StyleSheet.create ({
         width: 122,
         height: 122,
     },
+
+    about: {
+
+    },
+
+    title: {
+
+    },
+
+    description: {
+
+    },
+    
 })

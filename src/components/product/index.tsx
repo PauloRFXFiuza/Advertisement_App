@@ -20,9 +20,9 @@ export function Product ({data} : Props){
                 resizeMode="contain"
             />
 
-            <View>
-                <Text>{data.title}</Text>
-                <Text>{data.description}</Text>
+            <View style={styles.about}>
+                <Text style={styles.title}>{data.title}</Text>
+                <Text style={styles.description}>{data.description}</Text>
             </View>
 
         </View>
