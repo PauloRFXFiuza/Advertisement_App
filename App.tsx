@@ -1,6 +1,8 @@
 
-import { StyleSheet, Text, View } from 'react-native';
-import { Product } from './src/components/product';
+import { useRef } from "react" 
+import { StyleSheet, Text, View } from 'react-native'
+import { Product } from './src/components/product'
+import { captureRef } from "react-native-view-shot"
 
 const PRODUCT = {
   imageURI: "https://m.media-amazon.com/images/I/61FR1BJ71IL.jpg",
@@ -10,11 +12,14 @@ const PRODUCT = {
 }
 
 export default function App() {
+
+  const productRef = useRef<View>(null)
+
   return (
     <View style={styles.container}>
         <Product data={PRODUCT} />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -24,4 +29,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 24,
   },
-});
+})

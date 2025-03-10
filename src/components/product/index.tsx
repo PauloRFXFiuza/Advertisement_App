@@ -1,5 +1,6 @@
-import {View, Image, Text} from "react-native"
-import {styles} from "./styles"
+import { forwardRef } from "react"
+import { View, Image, Text } from "react-native"
+import { styles } from "./styles"
 
 type Props = {
     data: {
