@@ -9,8 +9,8 @@ export const styles = StyleSheet.create ({
     },
 
     image: {
-        width: 122,
-        height: 122,
+        width: 150,
+        height: 150,
     },
 
     about: {

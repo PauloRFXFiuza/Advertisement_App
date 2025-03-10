@@ -22,7 +22,7 @@ export function Product ({data} : Props){
 
             <View style={styles.about}>
                 <Text style={styles.title}>{data.title}</Text>
-                <Text style={styles.description} numberOfLines={2}>{data.description}</Text>
+                <Text style={styles.description} numberOfLines={3}>{data.description}</Text>
                 <Text style={styles.price}>{data.price}</Text>
             </View>
 
