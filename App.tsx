@@ -17,7 +17,7 @@ export default function App() {
 
   async function save () {
     try {
-      const productURI = await  captureRef (productRef, {
+      const productURI = await captureRef (productRef, {
         quality: 1,
         format: "png",
         result: "data-uri",
@@ -36,6 +36,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+        <Text style={styles.title}>Detalhes</Text>
         <Product ref={productRef} data={PRODUCT} />
         <Button title="Salvar" onPress={save} />
     </View>
@@ -43,6 +44,7 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -50,4 +52,11 @@ const styles = StyleSheet.create({
     padding: 24,
     gap: 24,
   },
+
+  title:{
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#C7C7C7",
+  },
+
 })
