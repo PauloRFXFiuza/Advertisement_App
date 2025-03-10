@@ -15,7 +15,7 @@ export const Product = forwardRef<View, Props>(
 
     ({data}, ref) => {
     return (
-        <View ref={ref} style={styles.container}>
+        <View ref={ref} style={styles.container} collapsable={false} >
 
             <Image 
                 source = {{uri: data.imageURI}} 
