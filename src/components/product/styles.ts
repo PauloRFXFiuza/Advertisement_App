@@ -13,7 +13,8 @@ export const styles = StyleSheet.create ({
     },
 
     about: {
-
+        flex: 1,
+        gap: 5,
     },
 
     title: {
@@ -23,5 +24,5 @@ export const styles = StyleSheet.create ({
     description: {
 
     },
-    
+
 })
