@@ -11,7 +11,7 @@ type Props = {
     }
 }
 
-export const Product = forwardRef( 
+export const Product = forwardRef<View, Props>( 
 
     ({data} : Props) => {
     return (
@@ -32,5 +32,5 @@ export const Product = forwardRef(
         </View>
     )
     } 
-    
+
 )
