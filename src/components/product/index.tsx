@@ -13,7 +13,11 @@ type Props = {
 export function Product ({data} : Props){
     return (
         <View style={styles.container}>
-            <Image source = {{uri: data.imageURI}} style={styles.image}/>
+            <Image 
+                source = {{uri: data.imageURI}} 
+                style={styles.image}
+                resizeMode="contain"
+            />
         </View>
     )
 }
