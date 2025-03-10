@@ -1,6 +1,6 @@
 
 import { useRef } from "react" 
-import { StyleSheet, Text, View, Share } from 'react-native'
+import { StyleSheet, Text, View, Share, Button } from 'react-native'
 import { Product } from './src/components/product'
 import { captureRef } from "react-native-view-shot"
 
@@ -37,6 +37,7 @@ export default function App() {
   return (
     <View style={styles.container}>
         <Product ref={productRef} data={PRODUCT} />
+        <Button title="Salvar" onPress={save} />
     </View>
   )
 }
@@ -47,5 +48,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'center',
     padding: 24,
+    gap: 24,
   },
 })
