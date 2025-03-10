@@ -14,6 +14,7 @@ type Props = {
 export const Product = forwardRef<View, Props>( 
 
     ({data}, ref) => {
+
     return (
         <View ref={ref} style={styles.container} collapsable={false} >
 
@@ -31,6 +32,7 @@ export const Product = forwardRef<View, Props>(
 
         </View>
     )
+    
     } 
 
 )
