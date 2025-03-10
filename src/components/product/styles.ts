@@ -4,6 +4,7 @@ export const styles = StyleSheet.create ({
     container: {
         width: "100%",
         flexDirection: "row",
+        alignItems: "center",
         gap: 12,
     },
 
@@ -18,11 +19,18 @@ export const styles = StyleSheet.create ({
     },
 
     title: {
-
+        fontSize: 16,
+        fontWeight: "bold",
     },
 
     description: {
-
+        fontSize: 12,
     },
+
+    price: {
+        fontSize: 16,
+        fontWeight: "bold",
+        marginTop: 22,
+    }
 
 })
