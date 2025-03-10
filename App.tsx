@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-        <Product data={PRODUCT} />
+        <Product ref={productRef} data={PRODUCT} />
     </View>
   )
 }

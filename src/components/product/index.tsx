@@ -13,9 +13,9 @@ type Props = {
 
 export const Product = forwardRef<View, Props>( 
 
-    ({data} : Props) => {
+    ({data}, ref) => {
     return (
-        <View style={styles.container}>
+        <View ref={ref} style={styles.container}>
 
             <Image 
                 source = {{uri: data.imageURI}} 
